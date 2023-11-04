@@ -7,3 +7,16 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+node_modules/
+.vscode/
+.github/
+.babelrc
+.gitignore
+.prettierrc.json
+release-notes.md
+webpack.common.js
+webpack.dev.js
+webpack.prod.js
+package.json
+package-lock.json
+
