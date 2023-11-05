@@ -3,7 +3,7 @@ import styles from "./item-row.module.css";
 
 function ItemRow({ cartItem, currency }) {
     const [item, setItem] = useState(cartItem);
-    const shop = "https://my-demo-store-01.myshopify.com";
+    //const shop = "https://my-demo-store-01.myshopify.com";
 
     const handleChange = (step, variant_id) => {
         console.log(variant_id);
@@ -19,7 +19,7 @@ function ItemRow({ cartItem, currency }) {
 
     const updateShopifyCart = async(data) => {
         console.log(data);
-        await fetch(`${shop}/cart/change.js`, {
+        await fetch("/cart/change.js", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
