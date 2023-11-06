@@ -1,32 +1,40 @@
 import React, { useState } from 'react';
 import styles from './CartRow.module.css';
 import { RiDeleteBin6Line } from 'react-icons/ri';
+import getSymbolFromCurrency from 'currency-symbol-map';
 
 function CartRow({ cartItem, currency, setCart }) {
   const [item, setItem] = useState(cartItem);
 
-  const updateQuantity = (step, variant_id) => {
-    let newQuantity = step + item.quantity;
-    let data = { [variant_id]: newQuantity };
-    if (newQuantity > 0) {
+  const updateRow = async (quantity) => {
+    let data = { [item.variant_id]: quantity };
+    if (quantity > 0) {
       setItem((prevItem) => ({
         ...prevItem,
-        quantity: newQuantity,
-        final_line_price: prevItem.price * newQuantity
+        quantity,
+        final_line_price: prevItem.price * quantity
       }));
     } else {
       setItem((prevItem) => ({ ...prevItem, quantity: 0 }));
     }
-    updateShopifyCart(data);
+    await updateShopifyCart(data);
   };
 
-  const handleDelete = (variant) => {
+  const updateQuantity = (step) => {
+    let newQuantity = step + Number(item.quantity);
+    updateRow(newQuantity);
+  };
+
+  const handleChange = (e) => {
+    updateRow(e.target.value);
+  };
+
+  const handleDelete = () => {
     setItem((prevItem) => ({ ...prevItem, quantity: 0 }));
-    updateShopifyCart({ [variant]: 0 });
+    updateShopifyCart({ [item.variant]: 0 });
   };
 
   const updateShopifyCart = async (data) => {
-    console.log(data);
     await fetch('/cart/update.js', {
       method: 'POST',
       headers: {
@@ -38,9 +46,8 @@ function CartRow({ cartItem, currency, setCart }) {
       .then((response) => {
         return response.json();
       })
-      .then((data) => {
-        const { items } = data;
-        setCart((prev) => ({ ...prev, items }));
+      .then((result) => {
+        setCart(result);
       });
   };
 
@@ -51,18 +58,19 @@ function CartRow({ cartItem, currency, setCart }) {
         <div className={styles.reactCartItemDescription}>
           <h2 className={styles.reactCartItemTitle}>{item.title}</h2>
           <span className={styles.reactCartItemPrice}>
-            {`${currency} ${Number(item.price) / 100.0}`}
+            {`${getSymbolFromCurrency(currency)} ${Number(item.price) / 100.0}`}
           </span>
           <div className={styles.reactCartItemControls}>
-            <button
-              className={styles.reactCartItemBtn}
-              onClick={() => updateQuantity(-1, item.variant_id)}>
+            <button className={styles.reactCartItemBtn} onClick={() => updateQuantity(-1)}>
               -
             </button>
-            <span className={styles.reactCartItemQuantity}>{item.quantity}</span>
-            <button
-              className={styles.reactCartItemBtn}
-              onClick={() => updateQuantity(1, item.variant_id)}>
+            <input
+              name={item.variant_id}
+              className={styles.reactCartItemQuantity}
+              value={item.quantity}
+              onChange={handleChange}
+            />
+            <button className={styles.reactCartItemBtn} onClick={() => updateQuantity(1)}>
               +
             </button>
           </div>
@@ -70,10 +78,10 @@ function CartRow({ cartItem, currency, setCart }) {
       </div>
 
       <div className={styles.reactCartItemLineTotal}>
-        {`${currency} ${Number(item.final_line_price) / 100.0}`}
+        {`${getSymbolFromCurrency(currency)} ${Number(item.final_line_price) / 100.0}`}
       </div>
       <div className={styles.reactCartItemDelete}>
-        <RiDeleteBin6Line onClick={() => handleDelete(item.variant_id)} />
+        <RiDeleteBin6Line onClick={handleDelete} />
       </div>
     </div>
   );
