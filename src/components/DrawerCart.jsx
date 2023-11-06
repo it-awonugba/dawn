@@ -5,7 +5,7 @@ import CartDrawerHeader from './CartDrawerHeader.jsx';
 import CartDrawerFooter from './CartDrawerFooter.jsx';
 
 const DrawerCart = () => {
-  const [cart, setCart] = useState({});
+  const [cart, setCart] = useState({ items: [] });
   const [loading, setLoading] = useState(true);
   const [toggleCartDrawer, setToggleCartDrawer] = useState(false);
 
@@ -19,19 +19,18 @@ const DrawerCart = () => {
             return response.json();
           })
           .then((data) => {
-            console.log(data);
             if (loading) {
               setCart(data);
               setLoading(false);
             }
           });
       } catch (error) {
-        console.log(error);
+        //console.log(error);
         setLoading(false);
       }
     };
     getCart();
-
+    console.log(cart);
     return () => {
       document.querySelectorAll('a[href="/cart"]').forEach((a) => {
         a.addEventListener('click', (e) => {
@@ -42,12 +41,6 @@ const DrawerCart = () => {
     };
   }, [loading, cart]);
 
-  if (loading) {
-    return;
-  }
-
-  console.log(cart);
-
   return (
     <form action="/checkout">
       <div
@@ -56,7 +49,7 @@ const DrawerCart = () => {
         }`}>
         <CartDrawerHeader toggleCart={setToggleCartDrawer} />
         <div className={styles.reactCartBody}>
-          {cart.items.length == 0 ? (
+          {!loading && Number(cart.item_count) === 0 ? (
             <h2>Your cart is empty</h2>
           ) : (
             cart.items.map((item) => (
@@ -65,11 +58,13 @@ const DrawerCart = () => {
                 currency={cart.currency}
                 setCart={setCart}
                 key={item.variant_id}
+                loading={loading}
+                setLoading={setLoading}
               />
             ))
           )}
         </div>
-        <CartDrawerFooter cart={cart} />
+        <CartDrawerFooter cart={cart} loading={loading} />
       </div>
     </form>
   );
