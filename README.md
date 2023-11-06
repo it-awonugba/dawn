@@ -35,13 +35,13 @@ This project is part of the interview for a Shopify Developer role. It was built
 
 To use this Cart Drawer:
 
-### Step 1 launch two terminals
+    - Step 1 launch two terminals
 
-### Step 2 In the first terminal run `npm run shopify`
+    - Step 2 In the first terminal run `npm run shopify`
 
-### Step 3 In the second terminal run `npm run dev` for development mode or `npm run build`
+    - Step 3 In the second terminal run `npm run dev` for development mode or `npm run build`
 
-### Step 4 Optional, format the codes in the source folder using `npm run format`
+    - Step 4 Optional, format the codes in the source folder using `npm run format`
 
 
 ## Credits
