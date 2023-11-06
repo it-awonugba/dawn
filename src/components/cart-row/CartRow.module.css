@@ -1,0 +1,76 @@
+.reactCartItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+  margin-bottom: 1.2rem;
+}
+
+.productInformation {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+
+.reactCartItemImage {
+  width: 6.8rem;
+  height: 6.8rem;
+  border-radius: 1.5rem;
+}
+
+.reactCartItemDescription {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.reactCartItemTitle {
+  font-size: 1.5rem;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+.reactCartItemPrice {
+  font-size: 1.5rem;
+}
+
+.reactCartItemControls {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  margin: 0;
+  gap: 1rem;
+}
+
+.reactCartItemBtn {
+  background-color: #000000;
+  color: #ffffff;
+  font-size: 2rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  cursor: pointer;
+}
+
+.reactCartItemQuantity {
+  display: block;
+  width: 4rem;
+  height: 2.5rem;
+  text-align: center;
+  border: 2px solid rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  line-height: 2rem;
+  font-size: 1.5rem;
+}
+
+.reactCartItemLineTotal {
+  font-size: 1.5rem;
+  font-weight: 600;
+  width: 8rem;
+}
+
+.reactCartItemDelete {
+  background-color: transparent;
+  border: none;
+}
