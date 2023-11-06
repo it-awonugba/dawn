@@ -1,10 +1,25 @@
 .reactCartFooter {
   display: flex;
   flex-direction: row;
+  justify-content: center;
   bottom: 0;
   position: fixed;
   border-top: 1px solid #e7e7e7;
   padding: 1.5rem;
+  width: 48rem;
+}
+
+.reactCartFooterSummary {
+  font-weight: 900;
+  font-size: 3rem;
+}
+.reactCartFooterSummary,
+.reactCartFooterCheckout {
+  flex: 1;
+}
+
+.reactCartFooterCheckout {
+  justify-content: flex-end;
 }
 
 .reactCartFooterCheckoutBtn {
