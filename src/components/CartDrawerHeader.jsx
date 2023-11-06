@@ -1,20 +1,19 @@
-import React from "react";
-import styles from "./CartDrawerHeader.module.css";
+import React from 'react';
+import styles from './CartDrawerHeader.module.css';
+import { RiCloseLine } from 'react-icons/ri';
 
-function CartDrawerHeader({cartItems}) {
-
-  const totalItemsInCart = () => {
-    return cartItems.reduce((sum, item) => sum + item.quantity, 0);
-  }
-
+function CartDrawerHeader({ toggleCart }) {
   return (
     <div className={styles.reactCartHeader}>
-      {cartItems.length == 0  ?
-        <h1>Your cart is empty</h1> :
-        <h1>{`Cart(${totalItemsInCart()})`}</h1>
-      }
+      <h1>Your Cart</h1>
+      <span className={styles.reactCartHeaderClose}>
+        <RiCloseLine
+          className={styles.reactCartHeaderCloseIcon}
+          onClick={() => toggleCart(false)}
+        />
+      </span>
     </div>
-  )
+  );
 }
 
 export default CartDrawerHeader;

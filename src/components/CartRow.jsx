@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import styles from './CartRow.module.css';
-import {RiDeleteBin6Line} from "react-icons/ri";
+import { RiDeleteBin6Line } from 'react-icons/ri';
 
 function CartRow({ cartItem, currency, setCart }) {
   const [item, setItem] = useState(cartItem);
 
   const updateQuantity = (step, variant_id) => {
     let newQuantity = step + item.quantity;
-    let data = { [variant_id] : newQuantity };
+    let data = { [variant_id]: newQuantity };
     if (newQuantity > 0) {
       setItem((prevItem) => ({
         ...prevItem,
@@ -22,8 +22,8 @@ function CartRow({ cartItem, currency, setCart }) {
 
   const handleDelete = (variant) => {
     setItem((prevItem) => ({ ...prevItem, quantity: 0 }));
-    updateShopifyCart({[variant]: 0});
-  }
+    updateShopifyCart({ [variant]: 0 });
+  };
 
   const updateShopifyCart = async (data) => {
     console.log(data);
@@ -33,13 +33,15 @@ function CartRow({ cartItem, currency, setCart }) {
         Accept: 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({updates: data})
-    }).then((response) => {
-       return response.json();
-    }).then(data => {
-       const {items} = data;
-       setCart((prev) => ({...prev, items}));
-    });
+      body: JSON.stringify({ updates: data })
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        const { items } = data;
+        setCart((prev) => ({ ...prev, items }));
+      });
   };
 
   return (
@@ -49,9 +51,7 @@ function CartRow({ cartItem, currency, setCart }) {
         <div className={styles.reactCartItemDescription}>
           <h2 className={styles.reactCartItemTitle}>{item.title}</h2>
           <span className={styles.reactCartItemPrice}>
-            {`${currency} ${
-              Number(item.price) / 100.0
-            }`}
+            {`${currency} ${Number(item.price) / 100.0}`}
           </span>
           <div className={styles.reactCartItemControls}>
             <button
