@@ -15,7 +15,8 @@
   font-size: 3rem;
 }
 
-.reactCartFooterSummary, .reactCartFooterCheckout {
+.reactCartFooterSummary,
+.reactCartFooterCheckout {
   flex: 1;
 }
 

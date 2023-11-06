@@ -69,3 +69,8 @@
   font-weight: 600;
   width: 8rem;
 }
+
+.reactCartItemDelete {
+  background-color: transparent;
+  border: none;
+}
