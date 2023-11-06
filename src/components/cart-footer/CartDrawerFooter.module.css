@@ -1,0 +1,37 @@
+.reactCartFooter {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  bottom: 0;
+  position: fixed;
+  border-top: 1px solid #e7e7e7;
+  padding: 1.5rem;
+  width: 48rem;
+}
+
+.reactCartFooterSummary {
+  font-weight: 900;
+  font-size: 3rem;
+}
+
+.reactCartFooterSummary,
+.reactCartFooterCheckout {
+  flex: 1;
+}
+
+.reactCartFooterCheckoutBtn {
+  border: none;
+  outline: 2px solid rgb(0, 0, 0);
+  background-color: rgb(0, 0, 0);
+  color: rgba(255, 255, 255, 0.8);
+  padding: 1rem 3rem;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.reactCartFooterCheckoutBtn:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: rgba(0, 0, 0);
+}
