@@ -9,7 +9,6 @@ This project is part of the interview for a Shopify Developer role. It was built
 - [Installation](#installation)
 - [Other dependencies](#other-dependencies)
 - [Usage](#usage)
-- [Development](#development)
 - [Credits](#credits)
 
 ## Installation
