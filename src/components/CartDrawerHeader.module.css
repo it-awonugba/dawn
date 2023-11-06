@@ -1,12 +1,26 @@
 .reactCartHeader {
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid #e7e7e7;
-    padding: 1rem;
-    margin-bottom: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1px solid #e7e7e7;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  justify-content: space-between;
 }
 
 .reactCartHeader h1 {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.reactCartHeaderClose {
+  width: 1.5rem;
+  height: 1.5rem;
+  line-height: 1.5rem;
+  display: block;
+}
+
+.reactCartHeaderCloseIcon {
+  width: 1.5rem;
+  height: 1.5rem;
 }

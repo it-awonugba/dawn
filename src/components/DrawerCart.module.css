@@ -1,22 +1,28 @@
 .reactCart {
-    width: 48rem;
-    position: fixed;
-    right: 0;
-    top: 0;
-    z-index: 9999999;
-    background-color: #ffffff;
-    height: 100vh;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-  }
+  width: 48rem;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 9999999;
+  background-color: #ffffff;
+  height: 100vh;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+}
 
-  .reactCartBody {
-    display: flex;
-    flex-direction: column;
-    gap: 2.5rem;
-  }
+.reactCartActive {
+  transition: ease-in 0.5s;
+  right: 0rem;
+}
 
-  .reactCartFooter {
+.reactCartInactive {
+  right: -48rem;
+  transition: ease-out 0.5s;
+}
 
-  }
+.reactCartBody {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
