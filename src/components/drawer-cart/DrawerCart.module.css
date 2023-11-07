@@ -4,7 +4,7 @@
   right: 0;
   top: 0;
   z-index: 9999999;
-  background-color: rgba(255, 255, 255);
+  background-color: rgb(254, 254, 254);
   height: 100vh;
   padding: 2rem;
   display: flex;
@@ -12,13 +12,17 @@
 }
 
 .reactCartActive {
-  transition: ease-in 0.5s;
+  transition: all 0.5s ease-in;
   right: 0rem;
 }
 
 .reactCartInactive {
   right: -48rem;
-  transition: ease-out 0.5s;
+  transition: all 0.5s ease-out;
+}
+
+.reactCartEmpty {
+  text-align: center;
 }
 
 .reactCartBody {

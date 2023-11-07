@@ -102,7 +102,11 @@ function CartRow({ cartItem, currency, loading, setLoading, setCart }) {
   return (
     <div className={styles.reactCartItem}>
       <div className={styles.productInformation}>
-        <img src={item.image} alt={item.title} className={styles.reactCartItemImage} />
+        <img
+          src={item.image}
+          alt={item.title}
+          className={styles.reactCartItemImage}
+        />
         <div className={styles.reactCartItemDescription}>
           <h2 className={styles.reactCartItemTitle}>{item.title}</h2>
           <span className={styles.reactCartItemPrice}>
@@ -134,9 +138,14 @@ function CartRow({ cartItem, currency, loading, setLoading, setCart }) {
       </div>
 
       <div className={styles.reactCartItemLineTotal}>
-        {`${getSymbolFromCurrency(currency)} ${Number(item.final_line_price) / 100.0}`}
+        {`${getSymbolFromCurrency(currency)} ${
+          Number(item.final_line_price) / 100.0
+        }`}
       </div>
-      <button className={styles.reactCartItemDelete} onClick={handleDelete} disabled={loading}>
+      <button
+        className={styles.reactCartItemDelete}
+        onClick={handleDelete}
+        disabled={loading}>
         <RiDeleteBin6Line />
       </button>
     </div>
