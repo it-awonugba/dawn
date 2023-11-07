@@ -51,7 +51,7 @@ const DrawerCart = () => {
         <CartDrawerHeader toggleCart={setToggleCartDrawer} />
         <div className={styles.reactCartBody}>
           {!loading && Number(cart.item_count) === 0 ? (
-            <h2>Your cart is empty</h2>
+            <h2 className={styles.reactCartEmpty}>Your cart is empty</h2>
           ) : (
             cart.items.map((item) => (
               <CartRow
@@ -65,7 +65,11 @@ const DrawerCart = () => {
             ))
           )}
         </div>
-        <CartDrawerFooter cart={cart} loading={loading} />
+        {Number(cart.item_count) > 0 ? (
+          <CartDrawerFooter cart={cart} loading={loading} />
+        ) : (
+          ''
+        )}
       </div>
     </form>
   );
