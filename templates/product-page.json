@@ -1,0 +1,13 @@
+{
+    "section": {
+        "main": {
+            "type": "product-page"
+        },
+        "title": {
+            "type": "title"
+        },
+        "price": {
+            "type": "price"
+        }
+    }
+}
